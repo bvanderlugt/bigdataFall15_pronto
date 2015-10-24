@@ -13,8 +13,7 @@ CREATE TABLE pronto_challenge.station (
 	dockcount INT, 
 	online DATE)
 COMMENT 'Pronto station data from challenge data set'
-ROW FORMAT DELIMITED FIELDS BY ','
-STORED AS TEXTFILE;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
 CREATE TABLE pronto_challenge.weather (
     Date DATE, 
@@ -39,8 +38,7 @@ CREATE TABLE pronto_challenge.weather (
 	Precipitation_In FLOAT , 
 	Events VARCHAR)
 COMMENT 'Pronto weather data from challenge data set'
-ROW FROMAT DELIMITED FIELDS BY ','
-STORED AS TEXTFILE;
+ROW FROMAT DELIMITED FIELDS BY TERMINATED ',';
 
 CREATE TABLE pronto_challenge.status (
 	station_id INT, 
@@ -50,8 +48,7 @@ CREATE TABLE pronto_challenge.status (
 	docks_blocked INT, 
 	time TIMESTAMP)
 COMMENT 'Pronto status data from challenge data set'
-ROW FROMAT DELIMITED FIELDS BY ','
-STORED AS TEXTFILE;
+ROW FROMAT DELIMITED FIELDS BY TERMINATED ',';
 
 CREATE TABLE pronto_challenge.trip (
 	trip_id INT, 
@@ -67,5 +64,4 @@ CREATE TABLE pronto_challenge.trip (
 	gender VARCHAR, 
 	birthyear INT)
 COMMENT 'Pronto trip data from challenge data set'
-ROW FROMAT DELIMITED FIELDS BY ','
-STORED AS TEXTFILE;
+ROW FROMAT DELIMITED FIELDS BY TERMINATED ',';
