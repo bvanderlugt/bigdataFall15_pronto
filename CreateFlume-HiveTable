@@ -1,0 +1,17 @@
+Create table tripData (
+  trip_id BIGINT, 
+  starttime STRING,
+  stoptime STRING, 
+  bikeid STRING,
+  tripduration DOUBLE,
+  from_station_name STRING,
+  to_station_name STRING,
+  from_station_id STRING,
+  to_station_id STRING,
+  usertype STRING,
+  gender STRING,
+  birthyear INT
+  )
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/user/root/pronto/trip';
