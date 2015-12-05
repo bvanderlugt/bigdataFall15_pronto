@@ -8,10 +8,15 @@ from optparse import OptionParser
 
 def read_options():
     parser = OptionParser()
-    parser.add_option("-i", "--interval", dest="interval", help="Request data every X minutes. Default=5 (5 mins)", default="5", type="int")
-    parser.add_option("-f", "--file_name", dest="output_file_name", help="Specify an output file. Default to current directory, file name = 'pronto_data.json'",
+    parser.add_option("-i", "--interval", dest="interval",
+                      help="Request data every i minutes. Default=5 (5 mins)",
+                      default="5", type="int")
+    parser.add_option("-f", "--file_name", dest="output_file_name",
+                      help="Specify an output file. Default = 'pronto_data.json'",
                       default="pronto_data.json", type="string")
-    parser.add_option("-l", "--file_location", dest="output_file_dir", help="Specify a directory path for output", default="/var/log", type="string")
+    parser.add_option("-l", "--file_location", dest="output_file_dir",
+                      help="Specify a directory path for output",
+                      default="/var/log", type="string")
     (options, args) = parser.parse_args()
     return options
 
@@ -27,7 +32,8 @@ def remove_old_file(file_name):
 
 def request_data():
     '''send get request to pronto data source'''
-    response = requests.get('https://secure.prontocycleshare.com/data/stations.json', timeout=5)
+    response = requests.get('https://secure.prontocycleshare.com/data/stations.json',
+                            timeout=5)
     data = response.json()
     return data
 
