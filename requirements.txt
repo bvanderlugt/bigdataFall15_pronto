@@ -1,0 +1,11 @@
+argparse==1.4.0
+gyp==0.1
+iniparse==0.3.1
+lxml==2.2.3
+ordereddict==1.2
+pycurl==7.19.0
+pygpgme==0.1
+requests==2.8.1
+urlgrabber==3.9.1
+wheel==0.26.0
+yum-metadata-parser==1.1.2
