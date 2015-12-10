@@ -3,6 +3,7 @@ import json
 import time
 import sys
 import os
+import datetime
 from optparse import OptionParser
 
 
@@ -49,6 +50,8 @@ def main():
             data = request_data()
             with open(output_file, 'ab+') as outfile:
                 json.dump(data, outfile)
+                outfile.write('\n')
+                print('\n Data written at %s' % datetime.datetime.utcnow())
             time.sleep(options.interval * 60)
     except KeyboardInterrupt:
         print('\nData request stopped')
