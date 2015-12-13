@@ -39,6 +39,25 @@ def request_data():
     return data
 
 
+def parse_data(data, station_key):
+    '''
+    Parse complete Pronto dataset. For each station, create list of dicts for
+    stations_key: station_key_value
+    '''
+    parsed = []
+    stations = data['stations']
+    for station in stations:
+        for key, val in station.iteritems():
+            if key == station_key:
+                parsed.append( { 'id' : station['id'],  key: val } )
+    return parsed
+
+
+
+    # parsed = [ { key: value } for (key, vaue) in station.iteritems() for station in stations if key == station_key ]
+    # return parsed
+
+
 def main():
     '''creates a log-like file from GET calls to pronto api'''
     options = read_options()
@@ -47,7 +66,9 @@ def main():
     try:
         print('\nBegin requesting data. Enter "^C" to stop')
         while True:
-            data = request_data()
+            # data = request_data()
+            datain = request_data()
+            data = parse_data(datain, 'ba')
             with open(output_file, 'ab+') as outfile:
                 json.dump(data, outfile)
                 outfile.write('\n')
