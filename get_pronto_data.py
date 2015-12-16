@@ -49,7 +49,8 @@ def parse_data(data, station_key):
     for station in stations:
         for key, val in station.iteritems():
             if key == station_key:
-                parsed.append( { 'id' : station['id'],  key: val } )
+                pair = (str(key), val)
+                parsed.append(pair)
     return parsed
 
 
@@ -70,8 +71,10 @@ def main():
             datain = request_data()
             data = parse_data(datain, 'ba')
             with open(output_file, 'ab+') as outfile:
-                json.dump(data, outfile)
-                outfile.write('\n')
+                # json.dump(data, outfile)
+                for pair in data:
+                    outfile.write('{0}, {1}'.format(pair[0], pair[1]))
+                    outfile.write('\n')
                 print('\n Data written at %s' % datetime.datetime.utcnow())
             time.sleep(options.interval * 60)
     except KeyboardInterrupt:
